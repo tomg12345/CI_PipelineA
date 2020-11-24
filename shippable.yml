@@ -1,13 +1,11 @@
 language: java
-  jdk: oraclejdk11
 
-  branches:
-    only:
-        - master
-
-  build:
-    ci:
-      - mkdir -p shippable/testresults
-      - mkdir -p shippable/codecoverage
-      - shippable_retry mvn install
-      - cp -r target shippable/codecoverage
+jdk:
+  - oraclejdk11
+  
+build:
+  ci:
+    - mkdir -p shippable/testresults
+    - mkdir -p shippable/codecoverage
+    
+    - shippable_retry mvn install -DskipTests=true
